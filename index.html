@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Global YouTube Statistics 2023</title>
+
+    <!-- Import pure.css -->
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+      integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fondamento&family=Open+Sans&family=PT+Serif&family=Roboto&display=swap" rel="stylesheet">
+
+    <!-- CSS file -->
+    <link rel="stylesheet" type="text/css" href="styles.css" media="all">
+    
+</head>
+
+<body>
+    <div class="page">
+        <!-- pure grid group -->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <img src="title.png" />
+                <p>
+                    This data, obtained from Kaggle, unveils the statistics of the <span class="bold">most</span> subscribed YouTube channels in 2023. It consists of comprehensive details on the top creators'
+                    subscriber counts, video views, upload frequency, country of origin, earnings, and more.
+                </p>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+        
+        <!-- Symbol Map -->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <div id="vis1" class="vis-container"></div>
+                <p>
+                    The United States has the highest number of top creators on YouTube compared to other countries. This could be due to English being the dominant language on YouTube, and the U.S. is an English-speaking country. 
+                    This linguistic advantage means that American content creators can reach a global audience without language barriers.
+                    Furthermore, the U.S. has one of the largest populations in the world, and this sheer size contributes to a larger pool of potential content creators.                 
+                </p>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+
+        <!-- Line Chart -->
+            <div class="pure-g">
+                <div class="pure-u-1-1">
+                    <div id="vis3" class="vis-container"></div>
+                    <p>
+                        Zooming into the top YouTubers from the United States, most of them started YouTube in the year of 2006. In contrast, there are not many famous YouTubers in 2023 who started during the Covid-19 period.
+                        One of the reasons could be due to the increase in the number of people starting their YouTube channels during the pandemic, hence making it more challenging for new YouTubers to stand out.
+                    </p>
+                </div>
+            </div>
+        <!-- end pure grid group -->
+
+        <!-- Scatter Plot -->
+        <div class="pure-g">
+            <div class="pure-u-1-1">
+                <div id="vis2" class="vis-container"></div>
+                <p>
+                    The scatterplot above shows the upload frequency vs the number of subscribers of each top creator on YouTube.
+                    However, it can be seen that there is no correlation between the upload frequency and number of subscribers, which suggests that
+                    success on YouTube is multifaceted and depends on a combination of factors beyond just how often videos are uploaded. For instance,
+                    content quality, niche selection, audience engagement, and promotion strategies also play critical roles. 
+                </p>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+
+        <!-- pure grid group -->
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+            <div id="vis4" class="vis-container"></div>
+            </div>
+
+            <div class="pure-u-1-2">
+            <div class="description-right">
+                <h2>Top YouTubers in the World</h2>
+                <p>
+                The bar chart shows the Top 10 Famous YouTubers in the World in 2023. 
+                We can see that T-Series, India's largest Music Label and Movie Studio, has the highest number of subscribers.  
+                </p>
+                <p>
+                It is known for uploading a wide variety of music videos, film soundtracks, and other music-related content, primarily from the Indian music and film industry. 
+                T-Series is particularly famous for its large catalog of Bollywood songs, devotional music, regional music, and pop music.
+                </p>
+            </div>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+
+        <!-- pure grid group -->
+        <div class="pure-g">
+            <div class="pure-u-1-2">
+            <div class="description-left">
+                <h2>Trends across Genders</h2>
+                <p>One interesting trend is that bullying rates have decreased across the years in all regions and genders. Of
+                note
+                is that the bullying rate in boys is now 1.9% lower than that in girls, despite starting 2.2% higher. This
+                change
+                occurred between 2010 and 2011. We speculate that this may be due to the popularisation of social media
+                around this
+                time, allowing for different avenues of bullying, such as cyberbullying, to emerge. </p>
+            </div>
+            </div>
+
+            <div class="pure-u-1-2">
+            <div id="vis5" class="vis-container"></div>
+            </div>
+        </div>
+        <!-- end pure grid group -->
+    </div> <!-- end page -->
+
+    <script type="text/javascript">
+        var specVis1 = "js/symbol_map.vg.json";
+        var specVis2 = "js/scatter_plot_by_country.vg.json";
+        var specVis3 = "js/created_year_line_chart.vg.json";
+        var specVis4 = "js/top_10_youtubers_bar_chart.vg.json";
+        var specVis5 = "js/channel_type_pie_chart.vg.json";
+
+    
+        vegaEmbed('#vis1', specVis1, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+    
+        vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+
+        vegaEmbed('#vis5', specVis5, { "actions": false }).then(function (result) {
+          // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(console.error);
+    </script>
+</body>
+</html>
