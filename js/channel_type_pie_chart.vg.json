@@ -2,7 +2,7 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 285,
     "height": 250,
-    "title": { "text": "Channel Type Pie Chart" },
+    "title": { "text": ["Number of Top YouTubers per", "Channel Type (2023)"] },
     "data": {"url": "https://raw.githubusercontent.com/jcha0157/assignment2/main/data/Global_YouTube_Statistics.csv"},
     "mark": {"type": "arc", "tooltip": true},
     "params": [{

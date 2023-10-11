@@ -1,7 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "width": 355,
-    "height": {"step": 50},
+    "height": {"step": 40},
     "title": { "text": ["Top 10 YouTubers with", "Highest Number of Subscribers (2023)"] },
     "data": {"url": "https://raw.githubusercontent.com/jcha0157/assignment2/main/data/Global_YouTube_Statistics.csv"},
     "transform": [
@@ -44,7 +44,7 @@
           "labelAlign": "left",
           "labelBaseline": "middle",
           "labelPadding": -5,
-          "labelOffset": -15,
+          "labelOffset": -12,
           "titleX": 5,
           "titleY": -5,
           "titleAngle": 0,
