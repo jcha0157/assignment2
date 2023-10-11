@@ -1,9 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 600,
-    "height": 400,
-    "title": { "text": "Upload Frequency vs Number of Subscribers Results" },
-    "data": {"url": "https://raw.githubusercontent.com/jcha0157/homework10/main/data/Global_YouTube_Statistics.csv"},
+    "width": 676,
+    "height": 500,
+    "title": { "text": "Upload Frequency vs Number of Subscribers (2023)" },
+    "data": {"url": "https://raw.githubusercontent.com/jcha0157/assignment2/main/data/Global_YouTube_Statistics.csv"},
     "params": [
         {
             "name": "Country_selection",
@@ -113,6 +113,19 @@
                 ],
                 "name": "Select Country: "
             }
+        },
+        {
+            "name": "paintbrush",
+            "select": {"type": "point", "on": "mouseover", "nearest": true}
+        },
+        {
+            "name": "search_input",
+            "bind": {
+              "input": "search",
+              "placeholder": "Youtuber Name",
+              "name": "Search: "
+            },
+            "value": ""
         }
     ],
     "transform": [
@@ -121,6 +134,7 @@
         {"filter": "datum.uploads > 0"},
         {"calculate": "datum.subscribers / 1000000", "as": "subscribers_in_millions"}
     ],
+    "mark": "point",
     "encoding": {
         "x": {
             "field": "subscribers_in_millions",
@@ -136,6 +150,18 @@
             "axis": {"tickCount": 6},
             "scale": {"type": "log", "base": 10, "domain": [1, 1000000]}
         },
+        "color": {"value": "#a63603"},
+        "size": {
+            "condition": {"param": "paintbrush", "value": 300},
+            "value": 50
+        },
+        "opacity": {
+            "condition": {
+              "test": "test(regexp(search_input,'i'), datum.Youtuber)",
+              "value": 0.9
+            },
+            "value": 0.1
+        },
         "tooltip": [
             {"field": "Youtuber", "type": "nominal"},
             {"field": "subscribers", "type": "quantitative", "title": "Number of Subscribers", "format": ","},
@@ -144,39 +170,6 @@
             {"field": "channel_type", "type": "nominal", "title": "Channel Type"}
         ]
     },
-    "layer": [
-        {
-            "mark": "point",
-            "encoding": {
-
-            }
-        },
-        {
-            "mark": {
-                "type": "text",
-                "align": "left",
-                "baseline": "middle",
-                "dx": 10,
-                "fontSize": 11
-            },
-            "encoding": {
-                "text": {
-                    "field": "Youtuber",
-                    "type": "nominal"
-                },
-                "color": {
-                    "value": "black"
-                },
-                "opacity": {
-                    "condition": {
-                        "test": "datum.Youtuber == 'T-Series' || datum.Youtuber == 'IndiaTV' || datum.Youtuber == 'Sports' || datum.Youtuber == 'Zee Telugu' || datum.Youtuber == '5-Minute Crafts' || datum.Youtuber == 'Movieclips' || datum.Youtuber == 'Zee Tamil' || datum.Youtuber == 'RedeTV'",
-                        "value": 1
-                    },
-                    "value": 0
-                }
-            }
-        }
-    ],  
   "config": {
     "view": {
       "stroke": null
@@ -189,5 +182,5 @@
       "fontSize": 16,
       "fontWeight": 600
     }
-  }  
+  }
 }

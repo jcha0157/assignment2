@@ -3,7 +3,7 @@
     "width": 285,
     "height": 250,
     "title": { "text": "Channel Type Pie Chart" },
-    "data": {"url": "../data/Global_YouTube_Statistics.csv"},
+    "data": {"url": "https://raw.githubusercontent.com/jcha0157/assignment2/main/data/Global_YouTube_Statistics.csv"},
     "mark": {"type": "arc", "tooltip": true},
     "params": [{
       "name": "industry",

@@ -3,7 +3,7 @@
     "width": 355,
     "height": {"step": 50},
     "title": { "text": ["Top 10 YouTubers with", "Highest Number of Subscribers (2023)"] },
-    "data": {"url": "../data/Global_YouTube_Statistics.csv"},
+    "data": {"url": "https://raw.githubusercontent.com/jcha0157/assignment2/main/data/Global_YouTube_Statistics.csv"},
     "transform": [
       {"calculate": "toNumber(datum.subscribers)", "as": "numeric_subscribers"},
       {

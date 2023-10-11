@@ -3,7 +3,7 @@
     "width": 636,
     "height": 250,
     "title": { "text": "U.S. Top YouTubers' Created Years (2023)" },
-    "data": {"url": "../data/Global_YouTube_Statistics.csv"},
+    "data": {"url": "https://raw.githubusercontent.com/jcha0157/assignment2/main/data/Global_YouTube_Statistics.csv"},
     "transform": [{"filter": "datum.Country == 'United States'"}],
     "layer": [
       {
