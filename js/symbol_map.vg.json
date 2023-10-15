@@ -3,7 +3,44 @@
     "width": 650,
     "height": 350,
     "title": "Number of Top Creators and Total Upload Frequency in each Country (2023)",
-    "projection": {"type": "equalEarth"},
+    "params": [
+      {
+        "name": "zoom_level",
+        "value": 120,
+        "bind": {
+          "input": "range",
+          "min": 120,
+          "max": 970,
+          "step": 50,
+          "name": "Zoom: "
+        }
+      },
+      {
+        "name": "center_to",
+        "value": [null, null],
+        "bind": {
+          "input": "select",
+          "options": [
+            [null, null],
+            [133.775136, -25.274398],
+            [-51.92528, -14.235004],
+            [78.96288, 20.593684],
+            [101.975766, 4.210484],
+            [105.318756, 61.52401],
+            [-3.435973, 55.378051],
+            [-95.712891, 37.09024]
+          ],
+          "labels": ["World", "Australia", "Brazil", "India", "Malaysia", "Russia", "United Kingdom", "United States"],
+          "name": "Map Center: "
+        }
+      }
+    ],
+    "projection": 
+      {
+        "type": "equalEarth",
+        "center": {"expr": "center_to"},
+        "scale": {"expr": "zoom_level"}
+      },
     "layer": [
       {
         "data": {
@@ -11,6 +48,13 @@
           "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
         },
         "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "white"}
+      },
+      {
+      "data": {
+        "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/7_others/oceans.topojson",
+        "format": { "type": "topojson", "feature": "oceans" }
+      },
+      "mark": { "type": "geoshape", "fill": "skyblue" }
       },
       {
         "data": {
@@ -49,6 +93,24 @@
             {"field": "uploads", "aggregate": "sum", "type": "quantitative", "title": "Total Upload Frequency", "format": ","},
             {"field": "Population", "type": "quantitative", "format": ","}
           ]
+        }
+      },
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/jcha0157/assignment2/main/data/Global_YouTube_Statistics.csv"
+        },
+        "mark": { "type": "text", "color": "black", "dy": -10, "dx": -15 },
+        "encoding": {
+          "longitude": { "field": "Longitude", "type": "quantitative" },
+          "latitude": { "field": "Latitude", "type": "quantitative" },
+          "text": { "field": "Country", "type": "nominal" },
+          "opacity": {
+            "condition": {
+              "test": "datum['Country'] == 'Australia' || datum['Country'] == 'Brazil' || datum['Country'] == 'India' || datum['Country'] == 'Malaysia' || datum['Country'] == 'Russia' || datum['Country'] == 'United Kingdom' || datum['Country'] == 'United States'",
+              "value": 1
+            },
+            "value": 0
+          }
         }
       }
     ],

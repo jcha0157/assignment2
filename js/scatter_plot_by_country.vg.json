@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 676,
+    "width": 593,
     "height": 500,
     "title": { "text": "Upload Frequency vs Number of Subscribers (2023)" },
     "data": {"url": "https://raw.githubusercontent.com/jcha0157/assignment2/main/data/Global_YouTube_Statistics.csv"},
@@ -134,7 +134,7 @@
         {"filter": "datum.uploads > 0"},
         {"calculate": "datum.subscribers / 1000000", "as": "subscribers_in_millions"}
     ],
-    "mark": "point",
+    "mark": "circle",
     "encoding": {
         "x": {
             "field": "subscribers_in_millions",
@@ -150,7 +150,7 @@
             "axis": {"tickCount": 6},
             "scale": {"type": "log", "base": 10, "domain": [1, 1000000]}
         },
-        "color": {"value": "#a63603"},
+        "color": {"field": "channel_type", "type": "nominal", "title": "Channel Type"},
         "size": {
             "condition": {"param": "paintbrush", "value": 300},
             "value": 50
@@ -173,6 +173,9 @@
   "config": {
     "view": {
       "stroke": null
+    },
+    "legend": {
+        "titleFont": "PT Serif"
     },
     "axis": {
       "titleFont": "PT Serif"
