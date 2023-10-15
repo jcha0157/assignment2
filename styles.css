@@ -43,6 +43,6 @@ body {
     padding-right: 15px;
 }
 
-.bold {
-    font-weight: bolder;
+.custom {
+    color: red;
 }
