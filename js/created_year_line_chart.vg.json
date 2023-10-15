@@ -54,6 +54,26 @@
           ],
           "color": {"value": "#333"}
         }
+      },
+      {
+        "mark": {"type": "text", "fontSize" : 11, "align" : "center", "fontWeight": "lighter"},
+        "encoding": {
+          "text": {"value": ["There is a significant growth of the YouTube creator community", "when the platform was in its early stages."]},
+          "x": {"value": 265},
+          "y": {"value": 40}
+        }
+      },
+      {
+        "mark": {
+          "type": "rule",
+          "color": "lightgrey"
+        },
+        "encoding": {
+          "x": {"value": 85},
+          "y": {"value": 5},
+          "x2": {"value": 240},
+          "y2": {"value": 33}
+        }
       }
     ],
     "config": {
